@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="reset.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../responsive/js/jquery-1.9.1.js"></script>
+<title>Left Menu - Show Submenu Onclick</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	$(function(){
+		$('.left li.li').click(function(){
+			$('.left li.li').css('z-index','0');
+			$('.left_hidden').fadeOut(400);
+			$('.left li a').removeClass('active');
+			$('.left li img').hide();
+			$(this).css('z-index','1');
+			$(this).find('a').addClass('active');
+			$(this).find('img').fadeIn(400);
+			$(this).find('.left_hidden').fadeIn(400);
+		});
+		
+		/*$('.left li.li').mouseout(function(){
+			$(this).css('z-index','0');
+			$(this).find('a').removeClass('active');
+			$(this).find('img').fadeOut(400);
+			$(this).find('.left_hidden').fadeOut(400);
+		});*/
+		$(document).mouseup(function(){
+			$('.left li.li').css('z-index','0');
+			$('.left_hidden').fadeOut(2);
+			$('.left li a').removeClass('active');
+			$('.left li img').hide();
+		});/**/
+		$('.left li.li').not(this).mouseleave(function(){
+			$('.left li.li').css('z-index','0');
+			$('.left_hidden').fadeOut(2);
+			$('.left li a').removeClass('active');
+			$('.left li img').hide();
+		});
+	})
+</script>
+<div class="left">
+<ul>
+            	<li class="li"><a href="#">TRACTOR LOANS</a><img src="icon5.png" width="24" height="22" style="display:none;">
+                	<div class="left_hidden" style="display:none;">
+                    <ul>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    </ul>
+                    </div>
+                </li>
+            	<li class="li"><a href="#">CAR LOANS</a><img src="icon5.png" width="24" height="22" style="display:none;">
+                	<div class="left_hidden" style="display:none;">
+                    <ul>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    	<li><a href="#">Lorem ipsum</a></li>
+                    </ul>
+                    </div>
+                    </li>
+            	<li class="li"><a href="#">SME LOANS</a></li>
+            	<li class="li"><a href="#">CE LOANS</a></li>
+            	<li class="li"><a href="#">CV LOANS</a></li>
+            	<li class="li"><a href="#">HOUSING FINANCE</a></li>
+            	<li class="li"><a href="#">GOLD LOAN</a></li>
+            	<li class="li"><a href="#">INSURANCE</a></li>
+            	<li class="li"><a href="#">SUVIDHA</a></li>
+            	<li class="li"><a href="#">AUTO LEASE LOANS</a></li>
+            </ul>
+            </div>
+</body>
+</html>

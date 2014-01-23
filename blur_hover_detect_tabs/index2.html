@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<title>Untitled Document</title>
+<style type="text/css">
+* {padding:0; margin:0;}
+
+    html {
+        background:url(/img/tiles/wood.png) 0 0 repeat;
+        padding:15px 15px 0;
+        font-family:sans-serif;
+        font-size:14px;
+    }
+
+    p, h3 { 
+        margin-bottom:15px;
+    }
+
+    div {
+        padding:10px;
+        width:600px;
+        background:#fff;
+    }
+
+    .tabs li {
+        list-style:none;
+        display:inline;
+    }
+
+    .tabs a {
+        padding:5px 10px;
+        display:inline-block;
+        background:#666;
+        color:#fff;
+        text-decoration:none;
+    }
+
+    .tabs a.active {
+        background:#fff;
+        color:#000;
+    }
+</style>
+<script type="text/javascript">
+// Wait until the DOM has loaded before querying the document
+    $(document).ready(function(){
+        $('ul.tabs').each(function(){
+        // For each set of tabs, we want to keep track of
+        // which tab is active and it's associated content
+        var $active, $content, $links = $(this).find('a');
+
+        // If the location.hash matches one of the links, use that as the active tab.
+        // If no match is found, use the first link as the initial active tab.
+        $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+        $active.addClass('active');
+        $content = $($active.attr('href'));
+
+        // Hide the remaining content
+        $links.not($active).each(function () {
+        $($(this).attr('href')).hide();
+    });
+
+        // Bind the click event handler
+        $(this).on('click', 'a', function(e){
+        // Make the old tab inactive.
+        $active.removeClass('active');
+        $content.hide();
+
+        // Update the variables with the new link and content
+        $active = $(this);
+        $content = $($(this).attr('href'));
+
+        // Make the tab active.
+        $active.addClass('active');
+        $content.show();
+
+        // Prevent the anchor's default click action
+        e.preventDefault();
+    });
+     });
+
+$(document).on('keypress',function(e) {
+ var keyCode = e.keyCode || e.which; 
+ if (keyCode == 9) {       //if the key pressed was 'tab'...
+    e.preventDefault(); 
+    //how to focus on the next tab, 
+    //remember to select the very first tab when you reach the last tab!
+  } 
+});
+  });
+            </script>
+</head>
+
+<body>
+<ul class='tabs'>
+        <li><a href='#tab1'>Tab 1</a></li>
+        <li><a href='#tab2'>Tab 2</a></li>
+        <li><a href='#tab3'>Tab 3</a></li>
+      </ul>
+      <div id='tab1'>
+        <ul class= "set2"> 
+            <li>  test 1<asp:TextBox runat="server"  ID="test1" /></li>
+            <li>  test 2<asp:TextBox runat="server"  ID="test2" /></li>
+        </ul>
+      </div>
+      <div id='tab2'>
+        <ul class= "set2"> 
+            <li>  test 3<asp:TextBox runat="server"  ID="test3" /></li>
+            <li>  test 4<asp:TextBox runat="server"  ID="test4" /></li>
+        </ul>
+      </div>
+      <div id='tab3'>
+        <ul class= "set"> 
+            <li>  test 5<asp:TextBox runat="server"  ID="test5" /></li>
+            <li>  test 6<asp:TextBox runat="server"  ID="test6" /></li>
+        </ul>
+      </div>
+</body>
+</html>
